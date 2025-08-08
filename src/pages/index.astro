@@ -1,62 +1,62 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 
-const latestPlans = [
+const projects = [
   {
-    title: "Modern 3-Bedroom Bungalow",
-    description: "Spacious design with open kitchen, master ensuite, and patio view.",
-    image: "/images/floorplans/modern-bungalow.jpg",
-    link: "/plans/modern-bungalow"
+    title: "Modern Apartment Floor Plan",
+    description: "A clean, functional 2-bedroom layout with optimized space usage.",
+    image: "/images/floorplan-apartment.jpg",
+    link: "/projects/apartment-floorplan"
   },
   {
-    title: "Luxury Villa with Pool",
-    description: "Elegant villa design with rooftop lounge and infinity pool.",
-    image: "/images/floorplans/luxury-villa.jpg",
-    link: "/plans/luxury-villa"
-  }
-];
-
-const latestRenders = [
-  {
-    title: "Cozy Minimalist Living Room",
-    description: "3D render showing warm lighting and minimalist interior design.",
-    image: "/images/renders/minimalist-living.jpg",
-    link: "/renders/minimalist-living"
+    title: "Luxury Villa 3D Render",
+    description: "Realistic 3D visualization of a luxury villa interior and exterior.",
+    image: "/images/villa-3d.jpg",
+    link: "/projects/villa-3d-render"
   },
   {
-    title: "Contemporary Kitchen Space",
-    description: "Open-plan kitchen with high-end finishes and skylight.",
-    image: "/images/renders/contemporary-kitchen.jpg",
-    link: "/renders/contemporary-kitchen"
+    title: "Office Layout Plan",
+    description: "An efficient corporate office floor plan with collaboration areas.",
+    image: "/images/office-layout.jpg",
+    link: "/projects/office-layout"
+  },
+  {
+    title: "Kitchen Interior 3D",
+    description: "A modern kitchen design with 3D rendered textures and lighting.",
+    image: "/images/kitchen-3d.jpg",
+    link: "/projects/kitchen-3d"
   }
 ];
 ---
 
-<Layout title="Designstacks — Floor Plans & 3D Renders">
-  <section class="my-10 text-center">
-    <h1 class="text-4xl font-bold text-skin-accent">Welcome to Designstacks</h1>
-    <p class="mt-4 text-lg text-skin-base max-w-2xl mx-auto">
-      Explore a curated collection of <strong>floor plans</strong> and stunning <strong>3D renders</strong> 
-      to inspire your dream home designs.
+<Layout title="Designstacks – Floor Plans & 3D Renders">
+  <section class="text-center py-12">
+    <h1 class="text-4xl font-bold text-skin-base mb-4">
+      Designstacks: Bringing Ideas to Life
+    </h1>
+    <p class="max-w-2xl mx-auto text-lg text-skin-base opacity-80">
+      We specialize in detailed architectural floor plans and stunning 3D visualizations. 
+      Whether it’s residential, commercial, or custom projects — we turn concepts into reality.
     </p>
   </section>
 
-  <section class="my-12">
-    <h2 class="text-2xl font-semibold mb-6">Latest Floor Plans</h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      {latestPlans.map(plan => (
-        <Card {...plan} />
-      ))}
-    </div>
+  <section class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 py-8">
+    {projects.map(project => (
+      <ProjectCard {...project} />
+    ))}
   </section>
 
-  <section class="my-12">
-    <h2 class="text-2xl font-semibold mb-6">3D Render Gallery</h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      {latestRenders.map(render => (
-        <Card {...render} />
-      ))}
-    </div>
+  <section class="text-center py-12 bg-skin-card rounded-lg mt-8">
+    <h2 class="text-2xl font-semibold text-skin-base mb-4">
+      Let’s Design Your Vision
+    </h2>
+    <p class="max-w-xl mx-auto text-skin-base opacity-80 mb-6">
+      Need a custom floor plan or 3D render for your next project? 
+      Get in touch and we’ll make it happen.
+    </p>
+    <a href="/contact" class="px-6 py-3 bg-skin-accent text-white rounded-lg hover:opacity-90">
+      Contact Us
+    </a>
   </section>
 </Layout>
