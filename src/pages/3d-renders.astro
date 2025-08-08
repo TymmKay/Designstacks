@@ -1,0 +1,32 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+
+const renders = [
+  {
+    title: "Modern Living Room",
+    description: "Bright open space with modern furniture.",
+    image: "/images/render1.jpg",
+    link: "#",
+  },
+  {
+    title: "Luxury Kitchen",
+    description: "Elegant finishes and high-end appliances.",
+    image: "/images/render2.jpg",
+    link: "#",
+  },
+  {
+    title: "Cozy Bedroom",
+    description: "Warm lighting with minimalistic design.",
+    image: "/images/render3.jpg",
+    link: "#",
+  },
+];
+---
+
+<h1 class="text-3xl font-bold mb-6">🎨 3D Renders</h1>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {renders.map(render => (
+    <ProjectCard {...render} />
+  ))}
+</div>
