@@ -29,39 +29,49 @@ const projects = [
   <head>
     <title>Designstacks - Floor Plans & 3D Renders</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Explore stunning floor plans and 3D architectural renders." />
+    <meta
+      name="description"
+      content="Explore stunning floor plans and 3D architectural renders."
+    />
   </head>
-  <body class="flex flex-col min-h-screen max-w-7xl mx-auto px-4 py-12">
+  <body class="flex flex-col min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
     <Header />
 
-    <main class="flex-grow">
-      <!-- Hero -->
-      <section class="bg-gray-100 dark:bg-gray-800 py-16 rounded-lg shadow-md mb-12">
-        <div class="max-w-4xl mx-auto text-center px-6">
-          <h1 class="text-5xl font-extrabold mb-4 text-gray-900 dark:text-white">
-            Discover Stunning Floor Plans & 3D Renders
-          </h1>
-          <p class="text-lg text-gray-700 dark:text-gray-300 mb-8">
-            Explore our curated gallery of architectural designs and visualizations.
-          </p>
-          <a
-            href="/floor-plans"
-            class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-md transition"
-            >Browse Floor Plans</a
-          >
-        </div>
-      </section>
+    <div class="flex-grow max-w-7xl mx-auto px-4 py-12 w-full">
+      <main>
+        <!-- Hero Section -->
+        <section
+          class="bg-gray-100 dark:bg-gray-800 py-16 rounded-lg shadow-md mb-12"
+        >
+          <div class="max-w-4xl mx-auto text-center px-6">
+            <h1
+              class="text-5xl font-extrabold mb-4 text-gray-900 dark:text-white"
+            >
+              Discover Stunning Floor Plans & 3D Renders
+            </h1>
+            <p class="text-lg text-gray-700 dark:text-gray-300 mb-8">
+              Explore our curated gallery of architectural designs and
+              visualizations.
+            </p>
+            <a
+              href="/floor-plans"
+              class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-md transition"
+              >Browse Floor Plans</a
+            >
+          </div>
+        </section>
 
-      <!-- Projects Grid -->
-      <section>
-        <h2 class="text-3xl font-bold mb-8 text-center">Our Projects</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <ProjectCard {...project} />
-          ))}
-        </div>
-      </section>
-    </main>
+        <!-- Projects Grid -->
+        <section>
+          <h2 class="text-3xl font-bold mb-8 text-center">Our Projects</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project) => (
+              <ProjectCard {...project} />
+            ))}
+          </div>
+        </section>
+      </main>
+    </div>
 
     <Footer />
   </body>
