@@ -14,6 +14,7 @@ const activeNav = navLinks.find((link) => currentPath.includes(link.key));
 
 <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md border-b border-gray-200 dark:border-gray-700">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Flex container to align logo, nav, and actions horizontally -->
     <div class="flex justify-between items-center py-4">
       <!-- Logo -->
       <a href="/" class="logo" aria-label="Designstacks home page">
@@ -74,16 +75,18 @@ const activeNav = navLinks.find((link) => currentPath.includes(link.key));
     </div>
   </nav>
 
-  <script>
-    const button = document.getElementById("mobile-menu-button");
-    const menu = document.getElementById("mobile-menu");
+  <script is:inline>
+    (() => {
+      const button = document.getElementById("mobile-menu-button");
+      const menu = document.getElementById("mobile-menu");
 
-    if (button && menu) {
-      button.addEventListener("click", () => {
-        const isExpanded = button.getAttribute("aria-expanded") === "true";
-        button.setAttribute("aria-expanded", String(!isExpanded));
-        menu.classList.toggle("hidden");
-      });
-    }
+      if (button && menu) {
+        button.addEventListener("click", () => {
+          const isExpanded = button.getAttribute("aria-expanded") === "true";
+          button.setAttribute("aria-expanded", String(!isExpanded));
+          menu.classList.toggle("hidden");
+        });
+      }
+    })();
   </script>
 </header>
