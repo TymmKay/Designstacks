@@ -1,38 +1,30 @@
-<button id="theme-toggle" aria-label="Toggle dark mode">
-  🌙
-</button>
+---
+---
+
+<button id="theme-toggle" aria-label="Toggle theme">🌙</button>
 
 <script>
-  const button = document.getElementById("theme-toggle");
+  const button = document.querySelector<HTMLButtonElement>("#theme-toggle");
 
-  // Check stored theme or default to light
-  if (
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
+  if (button) {
+    button.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
 
-  // Toggle on click
-  button.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark");
-    if (document.documentElement.classList.contains("dark")) {
-      localStorage.theme = "dark";
+      if (document.documentElement.classList.contains("dark")) {
+        button.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+      } else {
+        button.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+      }
+    });
+
+    // Set initial theme based on saved preference
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark");
       button.textContent = "☀️";
     } else {
-      localStorage.theme = "light";
       button.textContent = "🌙";
     }
-  });
-</script>
-
-<style>
-  button {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
   }
-</style>
+</script>
