@@ -1,199 +1,62 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "@layouts/Layout.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import LinkButton from "@components/LinkButton.astro";
-import Hr from "@components/Hr.astro";
-import Card from "@components/Card";
-import Socials from "@components/Socials.astro";
-import getSortedPosts from "@utils/getSortedPosts";
-import { SOCIALS } from "@config";
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
 
-const posts = await getCollection("blog");
+const latestPlans = [
+  {
+    title: "Modern 3-Bedroom Bungalow",
+    description: "Spacious design with open kitchen, master ensuite, and patio view.",
+    image: "/images/floorplans/modern-bungalow.jpg",
+    link: "/plans/modern-bungalow"
+  },
+  {
+    title: "Luxury Villa with Pool",
+    description: "Elegant villa design with rooftop lounge and infinity pool.",
+    image: "/images/floorplans/luxury-villa.jpg",
+    link: "/plans/luxury-villa"
+  }
+];
 
-const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
-
-const socialCount = SOCIALS.filter(social => social.active).length;
+const latestRenders = [
+  {
+    title: "Cozy Minimalist Living Room",
+    description: "3D render showing warm lighting and minimalist interior design.",
+    image: "/images/renders/minimalist-living.jpg",
+    link: "/renders/minimalist-living"
+  },
+  {
+    title: "Contemporary Kitchen Space",
+    description: "Open-plan kitchen with high-end finishes and skylight.",
+    image: "/images/renders/contemporary-kitchen.jpg",
+    link: "/renders/contemporary-kitchen"
+  }
+];
 ---
 
+<Layout title="Designstacks — Floor Plans & 3D Renders">
+  <section class="my-10 text-center">
+    <h1 class="text-4xl font-bold text-skin-accent">Welcome to Designstacks</h1>
+    <p class="mt-4 text-lg text-skin-base max-w-2xl mx-auto">
+      Explore a curated collection of <strong>floor plans</strong> and stunning <strong>3D renders</strong> 
+      to inspire your dream home designs.
+    </p>
+  </section>
 
-<Layout>
-  <Header />
-  <main id="main-content">
-    <section id="hero">
-      <h1>Hey, I'm Timothy Kyalo 👋</h1>
-      
-      <img 
-        src="/images/tymm.png" 
-        alt="Timothy Kyalo" 
-        style="display: block; margin: 16px auto; border-radius: 50%; max-width: 200px;" 
-      />
-
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="rss-link"
-        aria-label="rss feed"
-        title="RSS Feed"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon">
-          <path
-            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
-          ></path>
-          <path
-            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-          ></path>
-          <circle cx="6" cy="18" r="2"></circle>
-        </svg>
-        <span class="sr-only"> RSS Feed</span>
-      </a>
-
-
-      <p>
-        I'm Timothy Kyalo, a Project professional with a passion for delivering excellence and driving successful project outcomes.
-      </p>
-
-      <p>
-        With a degree in Construction Management and over 2 years of experience in project management, I have honed my expertise in project planning, quality control, and team leadership. Proficient in Microsoft Project, Jira Project Management software as well as Archi-CAD, I possess a proven track record of ensuring projects are completed on time, within budget, and to the highest standards.
-      </p>
-
-      <p>
-        My strong project management skills, combined with effective planning and organization abilities, make me a valuable asset to enhance infrastructure and projects. 🚀
-      </p>
-
-      {
-        // only display if at least one social link is enabled
-        socialCount > 0 && (
-          <div class="social-wrapper">
-            <div class="social-links">Let's connect </div>
-            <Socials />
-          </div>
-        )
-      }
-    </section>
-<section id="projects" class="mt-10">
-  <h2 class="text-2xl font-bold mb-6">Executed Construction Projects</h2>
-  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    <div class="rounded-xl shadow p-4 bg-white">
-      <img src="/images/ncbatatu.jpg" alt="NCBA Fit-Out" class="rounded-lg mb-4 w-full h-48 object-cover" />
-      <h3 class="text-lg font-semibold mb-1">🏢 NCBA Tatu City Interior Fit-Out</h3>
-      <p class="text-sm text-gray-600">
-        Completed full office fit-out in under 90 days including MEP, ceilings, and finishes. Led coordination and daily site execution.
-      </p>
+  <section class="my-12">
+    <h2 class="text-2xl font-semibold mb-6">Latest Floor Plans</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      {latestPlans.map(plan => (
+        <Card {...plan} />
+      ))}
     </div>
-    <div class="rounded-xl shadow p-4 bg-white">
-  <img src="/images/ict-officeapril.jpg" alt="Ministry of ICT Office Fit-Out" class="rounded-lg mb-4 w-full h-48 object-cover" />
-  <h3 class="text-lg font-semibold mb-1">🏢 Ministry of ICT – Office Interior Fit-Out</h3>
-  <p class="text-sm text-gray-600">
-    Delivered full interior fit-out for the Office of the PS & CS, including partitions, ceiling, lighting, and custom joinery within a tight 6-week deadline.
-  </p>
-</div>
+  </section>
 
-    <div class="rounded-xl shadow p-4 bg-white">
-      <img src="/images/security-booth.jpg" alt="Britam Security Booth" class="rounded-lg mb-4 w-full h-48 object-cover" />
-      <h3 class="text-lg font-semibold mb-1">🏗️ Britam Security Booth</h3>
-      <p class="text-sm text-gray-600">
-        Delivered customized mild steel half-partition security booth with accurate material schedule and fabrication supervision.
-      </p>
+  <section class="my-12">
+    <h2 class="text-2xl font-semibold mb-6">3D Render Gallery</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      {latestRenders.map(render => (
+        <Card {...render} />
+      ))}
     </div>
-  </div>
-</section>
-
-
-    <Hr />
-
-    {
-      featuredPosts.length > 0 && (
-        <>
-          <section id="featured">
-            <h2>Featured</h2>
-            <ul>
-              {featuredPosts.map(({ data, slug }) => (
-                <Card
-                  href={`/posts/${slug}`}
-                  frontmatter={data}
-                  secHeading={false}
-                />
-              ))}
-            </ul>
-          </section>
-          {recentPosts.length > 0 && <Hr />}
-        </>
-      )
-    }
-
-    {
-      recentPosts.length > 0 && (
-        <section id="recent-posts">
-          <h2>Recent Posts</h2>
-          <ul>
-            {recentPosts.map(
-              ({ data, slug }, index) =>
-                index < 4 && (
-                  <Card
-                    href={`/posts/${slug}`}
-                    frontmatter={data}
-                    secHeading={false}
-                  />
-                )
-            )}
-          </ul>
-        </section>
-      )
-    }
-
-    <div class="all-posts-btn-wrapper">
-      <LinkButton href="/posts">
-        All Posts
-        <svg xmlns="http://www.w3.org/2000/svg"
-          ><path
-            d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-          ></path>
-        </svg>
-      </LinkButton>
-    </div>
-  </main>
-
-  <Footer />
+  </section>
 </Layout>
-
-<style>
-  /* ===== Hero Section ===== */
-  #hero {
-    @apply pb-6 pt-8;
-  }
-  #hero h1 {
-    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
-  }
-  #hero .rss-link {
-    @apply mb-6;
-  }
-  #hero .rss-icon {
-    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
-  }
-  #hero p {
-    @apply my-2;
-  }
-  .social-wrapper {
-    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
-  }
-  .social-links {
-    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
-  }
-
-  /* ===== Featured & Recent Posts Sections ===== */
-  #featured,
-  #recent-posts {
-    @apply pb-6 pt-12;
-  }
-  #featured h2,
-  #recent-posts h2 {
-    @apply text-2xl font-semibold tracking-wide;
-  }
-  .all-posts-btn-wrapper {
-    @apply my-8 text-center;
-  }
-</style>
