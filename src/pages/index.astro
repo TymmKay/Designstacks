@@ -1,37 +1,68 @@
 ---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+
+const projects = [
+  {
+    title: "Modern 3 Bedroom",
+    description: "A sleek, modern home layout perfect for urban families.",
+    image: "/images/floorplan1.jpg",
+    link: "/projects/modern-3-bedroom",
+  },
+  {
+    title: "Luxury Villa",
+    description: "Spacious villa with elegant design and large outdoor spaces.",
+    image: "/images/floorplan2.jpg",
+    link: "/projects/luxury-villa",
+  },
+  {
+    title: "Small House Plan",
+    description: "Compact and efficient design ideal for small plots.",
+    image: "/images/floorplan3.jpg",
+    link: "/projects/small-house-plan",
+  },
+];
 ---
 
-<html lang="en">
+<html lang="en" class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
   <head>
     <title>Designstacks - Floor Plans & 3D Renders</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Explore stunning floor plans and 3D architectural renders." />
   </head>
-  <body class="max-w-6xl mx-auto px-4 py-12">
-    <h1 class="text-4xl font-bold mb-8 text-center">
-      Our Floor Plan & 3D Render Projects
-    </h1>
+  <body class="flex flex-col min-h-screen max-w-7xl mx-auto px-4 py-12">
+    <Header />
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <ProjectCard
-        title="Modern 3 Bedroom"
-        description="A sleek, modern home layout perfect for urban families."
-        image="/images/floorplan1.jpg"
-        link="/projects/modern-3-bedroom"
-      />
+    <main class="flex-grow">
+      <!-- Hero -->
+      <section class="bg-gray-100 dark:bg-gray-800 py-16 rounded-lg shadow-md mb-12">
+        <div class="max-w-4xl mx-auto text-center px-6">
+          <h1 class="text-5xl font-extrabold mb-4 text-gray-900 dark:text-white">
+            Discover Stunning Floor Plans & 3D Renders
+          </h1>
+          <p class="text-lg text-gray-700 dark:text-gray-300 mb-8">
+            Explore our curated gallery of architectural designs and visualizations.
+          </p>
+          <a
+            href="/floor-plans"
+            class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-md transition"
+            >Browse Floor Plans</a
+          >
+        </div>
+      </section>
 
-      <ProjectCard
-        title="Luxury Villa"
-        description="Spacious villa with elegant design and large outdoor spaces."
-        image="/images/floorplan2.jpg"
-        link="/projects/luxury-villa"
-      />
+      <!-- Projects Grid -->
+      <section>
+        <h2 class="text-3xl font-bold mb-8 text-center">Our Projects</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <ProjectCard {...project} />
+          ))}
+        </div>
+      </section>
+    </main>
 
-      <ProjectCard
-        title="Small House Plan"
-        description="Compact and efficient design ideal for small plots."
-        image="/images/floorplan3.jpg"
-        link="/projects/small-house-plan"
-      />
-    </div>
+    <Footer />
   </body>
 </html>
