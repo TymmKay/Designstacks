@@ -1,51 +1,48 @@
 ---
-import ProjectCard from "../components/ProjectCard.astro";
-
-const projects = [
-  {
-    title: "Modern 3-Bedroom Floor Plan",
-    description: "Spacious modern layout with open kitchen and living area.",
-    image: "/images/floorplan1.jpg",
-    link: "/projects/modern-3-bedroom"
-  },
-  {
-    title: "Luxury Villa 3D Render",
-    description: "High-quality 3D visualization of a contemporary villa.",
-    image: "/images/villa-render.jpg",
-    link: "/projects/luxury-villa"
-  },
-  {
-    title: "Small House Plan - 2 Bedroom",
-    description: "Efficient design for compact living spaces.",
-    image: "/images/small-house.jpg",
-    link: "/projects/small-house-plan"
-  }
-];
 ---
-
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Designstacks - Floor Plans & 3D Renders</title>
+    <title>Designstacks - Floor Plans</title>
   </head>
-  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
-    <section class="max-w-7xl mx-auto px-4 py-12">
-      <h1 class="text-4xl font-bold text-center mb-8">Designstacks</h1>
-      <p class="text-center text-lg mb-12">
-        Explore our curated collection of floor plans and 3D architectural renders.
-      </p>
+  <body class="max-w-6xl mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold mb-8 text-center">Our Floor Plan Projects</h1>
 
-      <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map(project => (
-          <ProjectCard
-            title={project.title}
-            description={project.description}
-            image={project.image}
-            link={project.link}
-          />
-        ))}
-      </div>
-    </section>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Modern 3 Bedroom -->
+      <a href="/projects/modern-3-bedroom" class="block group">
+        <img
+          src="/images/floorplan1.jpg"
+          alt="Modern 3 Bedroom Floor Plan"
+          class="rounded-lg shadow-lg mb-4 group-hover:opacity-80 transition"
+        />
+        <h2 class="text-xl font-semibold group-hover:text-blue-600 transition">
+          Modern 3 Bedroom
+        </h2>
+      </a>
+
+      <!-- Luxury Villa -->
+      <a href="/projects/luxury-villa" class="block group">
+        <img
+          src="/images/floorplan2.jpg"
+          alt="Luxury Villa Floor Plan"
+          class="rounded-lg shadow-lg mb-4 group-hover:opacity-80 transition"
+        />
+        <h2 class="text-xl font-semibold group-hover:text-blue-600 transition">
+          Luxury Villa
+        </h2>
+      </a>
+
+      <!-- Small House Plan -->
+      <a href="/projects/small-house-plan" class="block group">
+        <img
+          src="/images/floorplan3.jpg"
+          alt="Small House Floor Plan"
+          class="rounded-lg shadow-lg mb-4 group-hover:opacity-80 transition"
+        />
+        <h2 class="text-xl font-semibold group-hover:text-blue-600 transition">
+          Small House Plan
+        </h2>
+      </a>
+    </div>
   </body>
 </html>
