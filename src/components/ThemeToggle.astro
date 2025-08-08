@@ -1,40 +1,38 @@
----
-import { useState, useEffect } from "react";
+<button id="theme-toggle" aria-label="Toggle dark mode">
+  🌙
+</button>
 
-// State for current theme
-const [theme, setTheme] = Astro.useState("light");
+<script>
+  const button = document.getElementById("theme-toggle");
 
-// Load saved theme on mount
-useEffect(() => {
-  if (localStorage.theme === "dark" ||
-      (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+  // Check stored theme or default to light
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
   ) {
     document.documentElement.classList.add("dark");
-    setTheme("dark");
   } else {
     document.documentElement.classList.remove("dark");
-    setTheme("light");
   }
-}, []);
 
-// Toggle theme handler
-function toggleTheme() {
-  if (theme === "light") {
-    document.documentElement.classList.add("dark");
-    localStorage.theme = "dark";
-    setTheme("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-    localStorage.theme = "light";
-    setTheme("light");
+  // Toggle on click
+  button.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+    if (document.documentElement.classList.contains("dark")) {
+      localStorage.theme = "dark";
+      button.textContent = "☀️";
+    } else {
+      localStorage.theme = "light";
+      button.textContent = "🌙";
+    }
+  });
+</script>
+
+<style>
+  button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
   }
-}
----
-
-<button 
-  class="p-2 rounded border hover:bg-gray-200 dark:hover:bg-gray-700 transition"
-  onclick={toggleTheme}
-  aria-label="Toggle Theme"
->
-  {theme === "light" ? "🌙" : "☀️"}
-</button>
+</style>
