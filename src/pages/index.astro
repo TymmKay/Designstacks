@@ -19,7 +19,7 @@ const projects = [
   {
     title: "Small House Plan",
     description: "Compact and efficient design ideal for small plots.",
-    image: "/images/floorplan3.jpg.jpg",
+    image: "/images/floorplan3.jpg",  // fixed double .jpg issue
     link: "/projects/small-house-plan",
   },
 ];
@@ -37,13 +37,14 @@ const projects = [
   <body class="flex flex-col min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
     <Header />
 
-    <div class="flex-grow max-w-7xl mx-auto px-4 py-12 w-full">
-      <main>
+    <!-- Main container centered -->
+    <main class="flex-grow w-full">
+      <div class="max-w-7xl mx-auto px-4 py-12">
         <!-- Hero Section -->
         <section
-          class="bg-gray-100 dark:bg-gray-800 py-16 rounded-lg shadow-md mb-12"
+          class="bg-gray-100 dark:bg-gray-800 py-16 rounded-lg shadow-md mb-12 text-center"
         >
-          <div class="max-w-4xl mx-auto text-center px-6">
+          <div class="max-w-4xl mx-auto px-6">
             <h1
               class="text-5xl font-extrabold mb-4 text-gray-900 dark:text-white"
             >
@@ -70,8 +71,8 @@ const projects = [
             ))}
           </div>
         </section>
-      </main>
-    </div>
+      </div>
+    </main>
 
     <Footer />
   </body>
