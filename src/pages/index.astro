@@ -1,5 +1,8 @@
 ---
-import HomeLayout from "../layouts/HomeLayout.astro";
+import { SITE } from "@config";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
 const projects = [
@@ -24,32 +27,34 @@ const projects = [
 ];
 ---
 
-<HomeLayout title="Designstacks - Floor Plans & 3D Renders">
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20 shadow-lg rounded-lg mb-12">
-    <div class="max-w-4xl mx-auto text-center px-6">
-      <h1 class="text-5xl font-extrabold mb-4">
-        Discover Stunning Floor Plans & 3D Renders
-      </h1>
-      <p class="text-lg text-blue-100 mb-8">
+<Layout title={`Home | ${SITE.title}`}>
+  <Header activeNav="home" />
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="prose mb-28 max-w-3xl text-center mx-auto">
+      <h1 class="text-4xl font-extrabold">Discover Stunning Floor Plans & 3D Renders</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mt-4">
         Explore our curated gallery of architectural designs and visualizations.
       </p>
       <a
         href="/floor-plans"
-        class="inline-block bg-white text-blue-700 hover:bg-blue-50 font-semibold px-8 py-3 rounded-md transition"
+        class="inline-block mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-md transition"
       >
         Browse Floor Plans
       </a>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Grid -->
-  <section>
-    <h2 class="text-3xl font-bold mb-8 text-center">Our Projects</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {projects.map((project) => (
-        <ProjectCard {...project} />
-      ))}
-    </div>
-  </section>
-</HomeLayout>
+    <!-- Projects Grid -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+      <h2 class="text-3xl font-bold mb-8 text-center">Our Projects</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project) => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
