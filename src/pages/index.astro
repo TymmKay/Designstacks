@@ -19,7 +19,7 @@ const projects = [
   {
     title: "Small House Plan",
     description: "Compact and efficient design ideal for small plots.",
-    image: "/images/floorplan3.jpg",  // fixed double .jpg issue
+    image: "/images/floorplan3.jpg", // fixed double .jpg
     link: "/projects/small-house-plan",
   },
 ];
@@ -29,40 +29,32 @@ const projects = [
   <head>
     <title>Designstacks - Floor Plans & 3D Renders</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Explore stunning floor plans and 3D architectural renders."
-    />
+    <meta name="description" content="Explore stunning floor plans and 3D architectural renders." />
   </head>
   <body class="flex flex-col min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
     <Header />
 
-    <!-- Main container centered -->
     <main class="flex-grow w-full">
-      <div class="max-w-7xl mx-auto px-4 py-12">
-        <!-- Hero Section -->
-        <section
-          class="bg-gray-100 dark:bg-gray-800 py-16 rounded-lg shadow-md mb-12 text-center"
-        >
-          <div class="max-w-4xl mx-auto px-6">
-            <h1
-              class="text-5xl font-extrabold mb-4 text-gray-900 dark:text-white"
-            >
-              Discover Stunning Floor Plans & 3D Renders
-            </h1>
-            <p class="text-lg text-gray-700 dark:text-gray-300 mb-8">
-              Explore our curated gallery of architectural designs and
-              visualizations.
-            </p>
-            <a
-              href="/floor-plans"
-              class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-md transition"
-              >Browse Floor Plans</a
-            >
-          </div>
-        </section>
+      <!-- Full-width Hero -->
+      <section class="w-full bg-gray-100 dark:bg-gray-800 py-16 shadow-md mb-12">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+          <h1 class="text-5xl font-extrabold mb-4 text-gray-900 dark:text-white">
+            Discover Stunning Floor Plans & 3D Renders
+          </h1>
+          <p class="text-lg text-gray-700 dark:text-gray-300 mb-8">
+            Explore our curated gallery of architectural designs and visualizations.
+          </p>
+          <a
+            href="/floor-plans"
+            class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-md transition"
+          >
+            Browse Floor Plans
+          </a>
+        </div>
+      </section>
 
-        <!-- Projects Grid -->
+      <!-- Centered Projects -->
+      <div class="max-w-7xl mx-auto px-4 py-12">
         <section>
           <h2 class="text-3xl font-bold mb-8 text-center">Our Projects</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
