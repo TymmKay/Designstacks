@@ -9,14 +9,12 @@ function withOpacity(variableName) {
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class", // ✅ enable class-based dark mode
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
-    // Remove the following screen breakpoint or add other breakpoints
-    // if one breakpoint is not enough for you
     screens: {
       sm: "640px",
     },
-
     extend: {
       textColor: {
         skin: {
@@ -57,7 +55,6 @@ module.exports = {
         mono: ["IBM Plex Mono", "monospace"],
         poppins: ["Poppins", "sans-serif"],
       },
-
       typography: {
         DEFAULT: {
           css: {
