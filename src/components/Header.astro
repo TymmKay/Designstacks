@@ -20,8 +20,8 @@ const activeNav = navLinks.find((link) => currentPath.includes(link.key));
         <span class="font-bold text-2xl tracking-tight">🏠 Designstacks</span>
       </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center space-x-8">
+      <!-- Always-visible Navigation -->
+      <nav class="flex items-center space-x-8">
         {navLinks.map((link) => (
           <a
             href={link.href}
@@ -39,53 +39,7 @@ const activeNav = navLinks.find((link) => currentPath.includes(link.key));
       <!-- Actions -->
       <div class="flex items-center space-x-4">
         <ThemeToggle />
-        <!-- Mobile menu button -->
-        <button
-          id="mobile-menu-button"
-          aria-label="Open menu"
-          class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          ☰
-        </button>
       </div>
     </div>
   </div>
-
-  <!-- Mobile Navigation Menu (hidden by default) -->
-  <nav
-    id="mobile-menu"
-    class="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-md hidden"
-  >
-    <div class="px-4 pt-2 pb-4 space-y-1">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class={`block px-3 py-2 rounded-md text-base font-medium ${
-            activeNav?.key === link.key
-              ? "text-blue-600 dark:text-blue-400"
-              : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-          }`}
-        >
-          {link.name}
-        </a>
-      ))}
-    </div>
-  </nav>
-
-  <script is:inline>
-    (() => {
-      const button = document.getElementById("mobile-menu-button");
-      const menu = document.getElementById("mobile-menu");
-
-      if (button && menu) {
-        button.addEventListener("click", () => {
-          const isExpanded = button.getAttribute("aria-expanded") === "true";
-          button.setAttribute("aria-expanded", String(!isExpanded));
-          menu.classList.toggle("hidden");
-        });
-      }
-    })();
-  </script>
 </header>
