@@ -39,6 +39,21 @@ const socialImageURL = new URL(
 >
   <head>
     <meta charset="UTF-8" />
+
+    <!-- Dark mode init script -->
+    <script is:inline>
+      (function () {
+        const storedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      })();
+    </script>
+
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
@@ -103,8 +118,6 @@ const socialImageURL = new URL(
       gtag('js', new Date());
       gtag('config', 'G-JCR2S41KRX');
     </script>
-
-    <script is:inline src="/toggle-theme.js"></script>
   </head>
   <body>
     <slot />
