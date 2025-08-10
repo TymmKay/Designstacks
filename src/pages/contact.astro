@@ -1,56 +1,44 @@
 ---
-layout: ../layouts/AboutLayout.astro
-title: "Contact"
-description: "Get in touch with Timothy Kyalo"
+import { SITE } from "@config";
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+import Footer from "@components/Footer.astro";
+import Header from "@components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+
+export interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+  };
+}
+
+const frontmatter = {
+  title: "Contact",
+  description: "Get in touch with Timothy Kyalo"
+};
 ---
 
-# 📬 Contact Me
+<Layout title={`${frontmatter.title} | ${SITE.title}`}>
+  <Header activeNav="contact" />
+  <Breadcrumbs />
+  <main id="main-content">
+    <section id="contact" class="prose mb-28 max-w-3xl prose-img:border-0">
+      <h1 class="text-2xl tracking-wider sm:text-3xl">{frontmatter.title}</h1>
+      <p>If you’d like to reach out, feel free to use the form below or my direct contacts.</p>
 
-I'm always open to opportunities in **construction management**, **remote site supervision**, and **project planning**.  
-Whether you have a project in mind, want to collaborate, or just say hello — feel free to reach out.
+      <form action="https://formspree.io/f/yourFormID" method="POST" class="space-y-4">
+        <input type="text" name="name" placeholder="Your Name" required class="w-full border rounded px-3 py-2" />
+        <input type="email" name="email" placeholder="Your Email" required class="w-full border rounded px-3 py-2" />
+        <textarea name="message" placeholder="Your Message" required class="w-full border rounded px-3 py-2"></textarea>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Send</button>
+      </form>
 
----
-
-## 📝 Send me a message
-
-<form
-  action="https://formspree.io/f/your-form-id" 
-  method="POST"
-  class="space-y-4"
->
-  <div>
-    <label for="name" class="block font-semibold mb-1">Name</label>
-    <input type="text" id="name" name="name" required
-      class="w-full border border-gray-300 dark:border-gray-700 rounded-md p-2"
-    />
-  </div>
-
-  <div>
-    <label for="email" class="block font-semibold mb-1">Email</label>
-    <input type="email" id="email" name="email" required
-      class="w-full border border-gray-300 dark:border-gray-700 rounded-md p-2"
-    />
-  </div>
-
-  <div>
-    <label for="message" class="block font-semibold mb-1">Message</label>
-    <textarea id="message" name="message" rows="5" required
-      class="w-full border border-gray-300 dark:border-gray-700 rounded-md p-2"
-    ></textarea>
-  </div>
-
-  <button
-    type="submit"
-    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-semibold transition"
-  >
-    Send Message
-  </button>
-</form>
-
----
-
-## 📞 Direct Contact
-
-- **Email:** [timo.tee47@gmail.com](mailto:timo.tee47@gmail.com)  
-- **Phone:** +254 111570470  
-- **LinkedIn:** [linkedin.com/in/timothykyalo](https://linkedin.com/in/timothykyalo)
+      <div class="mt-6">
+        <p><strong>Email:</strong> youremail@example.com</p>
+        <p><strong>Phone:</strong> +123 456 789</p>
+        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">View Profile</a></p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
