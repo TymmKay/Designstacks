@@ -1,6 +1,9 @@
 ---
-import Header from "../components/Header.astro";
+import { SITE } from "@config";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
 const renders = [
@@ -25,20 +28,18 @@ const renders = [
 ];
 ---
 
-<html lang="en" class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-  <body class="flex flex-col min-h-screen">
-    <Header />
-
-    <main class="flex-grow max-w-7xl mx-auto px-4 py-12">
-      <h1 class="text-3xl font-bold mb-6 text-center">🎨 3D Renders</h1>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<Layout title={`3D Renders | ${SITE.title}`}>
+  <Header activeNav="renders" />
+  <Breadcrumbs />
+  <main id="main-content">
+    <section id="renders" class="prose mb-28 max-w-3xl prose-img:border-0">
+      <h1 class="text-2xl tracking-wider sm:text-3xl mb-8 text-center">🎨 3D Renders</h1>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {renders.map(render => (
           <ProjectCard {...render} />
         ))}
       </div>
-    </main>
-
-    <Footer />
-  </body>
-</html>
+    </section>
+  </main>
+  <Footer />
+</Layout>
